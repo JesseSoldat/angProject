@@ -1,6 +1,12 @@
 import angular from 'angular';
 import 'angular-ui-router';
-import SiteController from './controllers/site.controller';
+import HomeController from './controllers/home.controller';
+import SignUpController from './controllers/signup.controller';
+import AboutController from './controllers/about.controller';
+import ContactController from './controllers/contact.controller';
+
+
+
 import config from './config';
 
 
@@ -10,4 +16,9 @@ import config from './config';
 angular
   .module('app', ['ui.router'])
   .config(config)
-  .controller('SiteController', SiteController);
+  .controller('HomeController', HomeController)
+  .controller('SignUpController', SignUpController)
+  .controller('AboutController', AboutController)
+  .controller('ContactController', ContactController);
+
+

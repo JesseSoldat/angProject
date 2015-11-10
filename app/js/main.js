@@ -13,16 +13,20 @@ var config = function config($stateProvider, $urlRouterProvider) {
     templateUrl: 'templates/layout.tpl.html'
   }).state('root.home', {
     url: '/',
-    controller: 'SiteController',
+    controller: 'HomeController',
     templateUrl: 'templates/home.tpl.html'
+  }).state('root.signup', {
+    url: '/signup',
+    controller: 'SignUpController',
+    templateUrl: 'templates/signup.tpl.html'
   }).state('root.about', {
     url: '/about',
-    controller: 'SiteController',
+    controller: 'AboutController',
     templateUrl: 'templates/about.tpl.html'
 
   }).state('root.contact', {
     url: '/contact',
-    controller: 'SiteController',
+    controller: 'ContactController',
     templateUrl: 'templates/contact.tpl.html'
 
   });
@@ -38,18 +42,61 @@ module.exports = exports['default'];
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var SiteController = function SiteController($scope) {
-  $scope.home = "Home Page";
-  $scope.about = "About Page";
-  $scope.contact = "Contact Page";
+var AboutController = function AboutController($scope) {
+  $scope.about = "About";
 };
 
-SiteController.$inject = ["$scope"];
+AboutController.$inject = ["$scope"];
 
-exports["default"] = SiteController;
+exports["default"] = AboutController;
 module.exports = exports["default"];
 
 },{}],3:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var ContactController = function ContactController($scope) {
+  $scope.contact = "Contact";
+};
+
+ContactController.$inject = ["$scope"];
+
+exports["default"] = ContactController;
+module.exports = exports["default"];
+
+},{}],4:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var HomeController = function HomeController($scope) {
+  $scope.home = "Home Page";
+};
+
+HomeController.$inject = ["$scope"];
+
+exports["default"] = HomeController;
+module.exports = exports["default"];
+
+},{}],5:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var SignUpController = function SignUpController($scope) {
+  $scope.signup = "Sign Up";
+};
+
+SignUpController.$inject = ["$scope"];
+
+exports["default"] = SignUpController;
+module.exports = exports["default"];
+
+},{}],6:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -60,17 +107,29 @@ var _angular2 = _interopRequireDefault(_angular);
 
 require('angular-ui-router');
 
-var _controllersSiteController = require('./controllers/site.controller');
+var _controllersHomeController = require('./controllers/home.controller');
 
-var _controllersSiteController2 = _interopRequireDefault(_controllersSiteController);
+var _controllersHomeController2 = _interopRequireDefault(_controllersHomeController);
+
+var _controllersSignupController = require('./controllers/signup.controller');
+
+var _controllersSignupController2 = _interopRequireDefault(_controllersSignupController);
+
+var _controllersAboutController = require('./controllers/about.controller');
+
+var _controllersAboutController2 = _interopRequireDefault(_controllersAboutController);
+
+var _controllersContactController = require('./controllers/contact.controller');
+
+var _controllersContactController2 = _interopRequireDefault(_controllersContactController);
 
 var _config = require('./config');
 
 var _config2 = _interopRequireDefault(_config);
 
-_angular2['default'].module('app', ['ui.router']).config(_config2['default']).controller('SiteController', _controllersSiteController2['default']);
+_angular2['default'].module('app', ['ui.router']).config(_config2['default']).controller('HomeController', _controllersHomeController2['default']).controller('SignUpController', _controllersSignupController2['default']).controller('AboutController', _controllersAboutController2['default']).controller('ContactController', _controllersContactController2['default']);
 
-},{"./config":1,"./controllers/site.controller":2,"angular":6,"angular-ui-router":4}],4:[function(require,module,exports){
+},{"./config":1,"./controllers/about.controller":2,"./controllers/contact.controller":3,"./controllers/home.controller":4,"./controllers/signup.controller":5,"angular":9,"angular-ui-router":7}],7:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.15
@@ -4441,7 +4500,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],5:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.7
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -33346,11 +33405,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],6:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":5}]},{},[3])
+},{"./angular":8}]},{},[6])
 
 
 //# sourceMappingURL=main.js.map
