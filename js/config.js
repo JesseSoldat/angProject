@@ -13,6 +13,11 @@ let config = function($stateProvider, $urlRouterProvider) {
       controller: 'HomeController',
       templateUrl: 'templates/home.tpl.html'
     })
+    .state('root.naruto', {
+      url: '/naruto',
+      controller: 'NarutoController',
+      templateUrl: 'templates/naruto.tpl.html'
+    })
     .state('root.signup', {
       url: '/signup',
       controller: 'SignUpController',

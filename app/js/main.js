@@ -15,6 +15,10 @@ var config = function config($stateProvider, $urlRouterProvider) {
     url: '/',
     controller: 'HomeController',
     templateUrl: 'templates/home.tpl.html'
+  }).state('root.naruto', {
+    url: '/naruto',
+    controller: 'NarutoController',
+    templateUrl: 'templates/naruto.tpl.html'
   }).state('root.signup', {
     url: '/signup',
     controller: 'SignUpController',
@@ -82,6 +86,26 @@ exports["default"] = HomeController;
 module.exports = exports["default"];
 
 },{}],5:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var NarutoController = function NarutoController($scope, $http, PARSE) {
+
+  var url = PARSE.URL + 'classes/naruto';
+
+  $http.get(url, PARSE.CONFIG).then(function (res) {
+    $scope.characters = res.data.results;
+  });
+};
+
+NarutoController.$inject = ['$scope', '$http', 'PARSE'];
+
+exports['default'] = NarutoController;
+module.exports = exports['default'];
+
+},{}],6:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -96,7 +120,7 @@ SignUpController.$inject = ["$scope"];
 exports["default"] = SignUpController;
 module.exports = exports["default"];
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -123,13 +147,25 @@ var _controllersContactController = require('./controllers/contact.controller');
 
 var _controllersContactController2 = _interopRequireDefault(_controllersContactController);
 
+var _controllersNarutoController = require('./controllers/naruto.controller');
+
+var _controllersNarutoController2 = _interopRequireDefault(_controllersNarutoController);
+
 var _config = require('./config');
 
 var _config2 = _interopRequireDefault(_config);
 
-_angular2['default'].module('app', ['ui.router']).config(_config2['default']).controller('HomeController', _controllersHomeController2['default']).controller('SignUpController', _controllersSignupController2['default']).controller('AboutController', _controllersAboutController2['default']).controller('ContactController', _controllersContactController2['default']);
+_angular2['default'].module('app', ['ui.router']).constant('PARSE', {
+  URL: 'https://api.parse.com/1/',
+  CONFIG: {
+    headers: {
+      'X-Parse-Application-Id': 'ApD2tNdTPDdv0HW8XEQjZpWgwaJYwcGZzN30doW1',
+      'X-Parse-REST-API-Key': 'p0BfgYREvmjZ1uJ4SBNtA8OdtS1vVSDygCnnPYKM'
+    }
+  }
+}).config(_config2['default']).controller('HomeController', _controllersHomeController2['default']).controller('NarutoController', _controllersNarutoController2['default']).controller('SignUpController', _controllersSignupController2['default']).controller('AboutController', _controllersAboutController2['default']).controller('ContactController', _controllersContactController2['default']);
 
-},{"./config":1,"./controllers/about.controller":2,"./controllers/contact.controller":3,"./controllers/home.controller":4,"./controllers/signup.controller":5,"angular":9,"angular-ui-router":7}],7:[function(require,module,exports){
+},{"./config":1,"./controllers/about.controller":2,"./controllers/contact.controller":3,"./controllers/home.controller":4,"./controllers/naruto.controller":5,"./controllers/signup.controller":6,"angular":10,"angular-ui-router":8}],8:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.15
@@ -4500,7 +4536,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.7
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -33405,11 +33441,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":8}]},{},[6])
+},{"./angular":9}]},{},[7])
 
 
 //# sourceMappingURL=main.js.map
