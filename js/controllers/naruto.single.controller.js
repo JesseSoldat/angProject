@@ -1,4 +1,4 @@
-let SingleController = function($scope, $stateParams, $http, PARSE) {
+let NarutoSingleController = function($scope, $stateParams, $http, PARSE) {
   
 
   let url = PARSE.URL + 'classes/naruto/' + $stateParams.narutoId;
@@ -20,6 +20,6 @@ let SingleController = function($scope, $stateParams, $http, PARSE) {
 
 };
 
-SingleController.$inject = ["$scope", "$stateParams", "$http", "PARSE"];
+NarutoSingleController.$inject = ["$scope", "$stateParams", "$http", "PARSE"];
 
-export default SingleController;
+export default NarutoSingleController;

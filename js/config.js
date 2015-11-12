@@ -20,8 +20,13 @@ let config = function($stateProvider, $urlRouterProvider) {
     })
     .state('root.single', {
       url: '/single/:narutoId',
-      controller: 'SingleController',
+      controller: 'NarutoSingleController',
       templateUrl: 'templates/single.tpl.html'
+    })
+    .state('root.bleach', {
+      url: '/bleach',
+      controller: 'BleachController',
+      templateUrl: 'templates/bleach.tpl.html'
     })
     .state('root.add', {
       url: '/add',

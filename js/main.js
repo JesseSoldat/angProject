@@ -1,11 +1,21 @@
 import angular from 'angular';
 import 'angular-ui-router';
+//Controller
 import HomeController from './controllers/home.controller';
+
 import NarutoController from './controllers/naruto.controller';
+import NarutoSingleController from './controllers/naruto.single.controller';
+
+import BleachController from './controllers/bleach.controller';
+
 import AddController from './controllers/add.controller';
-import SingleController from './controllers/single.controller';
 import ContactController from './controllers/contact.controller';
+//Config
 import config from './config';
+//Service
+import NarutoService from './services/naruto.service';
+import BleachService from './services/bleach.service';
+
 
 
 angular
@@ -23,7 +33,13 @@ angular
   .controller('HomeController', HomeController)
   .controller('NarutoController', NarutoController)
   .controller('AddController', AddController)
-  .controller('SingleController', SingleController)
-  .controller('ContactController', ContactController);
+  .controller('NarutoSingleController', NarutoSingleController)
+  .controller('BleachController', BleachController)
+  .controller('ContactController', ContactController)
+
+  .service('NarutoService', NarutoService)
+  .service('BleachService', BleachService)
+
+;
 
 

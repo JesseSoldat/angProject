@@ -21,8 +21,12 @@ var config = function config($stateProvider, $urlRouterProvider) {
     templateUrl: 'templates/naruto.tpl.html'
   }).state('root.single', {
     url: '/single/:narutoId',
-    controller: 'SingleController',
+    controller: 'NarutoSingleController',
     templateUrl: 'templates/single.tpl.html'
+  }).state('root.bleach', {
+    url: '/bleach',
+    controller: 'BleachController',
+    templateUrl: 'templates/bleach.tpl.html'
   }).state('root.add', {
     url: '/add',
     controller: 'AddController',
@@ -74,6 +78,25 @@ exports["default"] = AddController;
 module.exports = exports["default"];
 
 },{}],3:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var BleachController = function BleachController($scope, BleachService) {
+
+  BleachService.getBleachChars().then(function (res) {
+    console.log(res);
+    $scope.characters = res.data.results;
+  });
+};
+
+BleachController.$inject = ['$scope', 'BleachService'];
+
+exports['default'] = BleachController;
+module.exports = exports['default'];
+
+},{}],4:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -88,7 +111,7 @@ ContactController.$inject = ["$scope"];
 exports["default"] = ContactController;
 module.exports = exports["default"];
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -103,33 +126,37 @@ HomeController.$inject = ["$scope"];
 exports["default"] = HomeController;
 module.exports = exports["default"];
 
-},{}],5:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
-var NarutoController = function NarutoController($scope, $http, PARSE) {
-
-  var url = PARSE.URL + 'classes/naruto';
-
-  $http.get(url, PARSE.CONFIG).then(function (res) {
-    $scope.characters = res.data.results;
-  });
-};
-
-NarutoController.$inject = ['$scope', '$http', 'PARSE'];
-
-exports['default'] = NarutoController;
-module.exports = exports['default'];
-
 },{}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var SingleController = function SingleController($scope, $stateParams, $http, PARSE) {
+var NarutoController = function NarutoController($scope, NarutoService) {
+
+  NarutoService.getNarutos().then(function (res) {
+    $scope.characters = res.data.results;
+  });
+
+  // let url = PARSE.URL + 'classes/naruto';
+
+  // $http.get(url, PARSE.CONFIG).then( (res) => {
+  //   $scope.characters = res.data.results;
+  // });
+};
+
+NarutoController.$inject = ['$scope', 'NarutoService'];
+
+exports['default'] = NarutoController;
+module.exports = exports['default'];
+
+},{}],7:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var NarutoSingleController = function NarutoSingleController($scope, $stateParams, $http, PARSE) {
 
   var url = PARSE.URL + 'classes/naruto/' + $stateParams.narutoId;
 
@@ -147,12 +174,12 @@ var SingleController = function SingleController($scope, $stateParams, $http, PA
   };
 };
 
-SingleController.$inject = ["$scope", "$stateParams", "$http", "PARSE"];
+NarutoSingleController.$inject = ["$scope", "$stateParams", "$http", "PARSE"];
 
-exports['default'] = SingleController;
+exports['default'] = NarutoSingleController;
 module.exports = exports['default'];
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -163,6 +190,8 @@ var _angular2 = _interopRequireDefault(_angular);
 
 require('angular-ui-router');
 
+//Controller
+
 var _controllersHomeController = require('./controllers/home.controller');
 
 var _controllersHomeController2 = _interopRequireDefault(_controllersHomeController);
@@ -171,21 +200,37 @@ var _controllersNarutoController = require('./controllers/naruto.controller');
 
 var _controllersNarutoController2 = _interopRequireDefault(_controllersNarutoController);
 
+var _controllersNarutoSingleController = require('./controllers/naruto.single.controller');
+
+var _controllersNarutoSingleController2 = _interopRequireDefault(_controllersNarutoSingleController);
+
+var _controllersBleachController = require('./controllers/bleach.controller');
+
+var _controllersBleachController2 = _interopRequireDefault(_controllersBleachController);
+
 var _controllersAddController = require('./controllers/add.controller');
 
 var _controllersAddController2 = _interopRequireDefault(_controllersAddController);
-
-var _controllersSingleController = require('./controllers/single.controller');
-
-var _controllersSingleController2 = _interopRequireDefault(_controllersSingleController);
 
 var _controllersContactController = require('./controllers/contact.controller');
 
 var _controllersContactController2 = _interopRequireDefault(_controllersContactController);
 
+//Config
+
 var _config = require('./config');
 
 var _config2 = _interopRequireDefault(_config);
+
+//Service
+
+var _servicesNarutoService = require('./services/naruto.service');
+
+var _servicesNarutoService2 = _interopRequireDefault(_servicesNarutoService);
+
+var _servicesBleachService = require('./services/bleach.service');
+
+var _servicesBleachService2 = _interopRequireDefault(_servicesBleachService);
 
 _angular2['default'].module('app', ['ui.router']).constant('PARSE', {
   URL: 'https://api.parse.com/1/',
@@ -195,9 +240,77 @@ _angular2['default'].module('app', ['ui.router']).constant('PARSE', {
       'X-Parse-REST-API-Key': 'p0BfgYREvmjZ1uJ4SBNtA8OdtS1vVSDygCnnPYKM'
     }
   }
-}).config(_config2['default']).controller('HomeController', _controllersHomeController2['default']).controller('NarutoController', _controllersNarutoController2['default']).controller('AddController', _controllersAddController2['default']).controller('SingleController', _controllersSingleController2['default']).controller('ContactController', _controllersContactController2['default']);
+}).config(_config2['default']).controller('HomeController', _controllersHomeController2['default']).controller('NarutoController', _controllersNarutoController2['default']).controller('AddController', _controllersAddController2['default']).controller('NarutoSingleController', _controllersNarutoSingleController2['default']).controller('BleachController', _controllersBleachController2['default']).controller('ContactController', _controllersContactController2['default']).service('NarutoService', _servicesNarutoService2['default']).service('BleachService', _servicesBleachService2['default']);
 
-},{"./config":1,"./controllers/add.controller":2,"./controllers/contact.controller":3,"./controllers/home.controller":4,"./controllers/naruto.controller":5,"./controllers/single.controller":6,"angular":10,"angular-ui-router":8}],8:[function(require,module,exports){
+},{"./config":1,"./controllers/add.controller":2,"./controllers/bleach.controller":3,"./controllers/contact.controller":4,"./controllers/home.controller":5,"./controllers/naruto.controller":6,"./controllers/naruto.single.controller":7,"./services/bleach.service":9,"./services/naruto.service":10,"angular":13,"angular-ui-router":11}],9:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var BleachService = function BleachService($http, PARSE) {
+
+  var url = PARSE.URL + 'classes/bleach';
+  //list of naruto characters
+  this.getBleachChars = function () {
+    return $http({
+      url: url,
+      headers: PARSE.CONFIG.headers,
+      method: 'GET',
+      cache: true
+    });
+  };
+  //single naruto character
+  // this.getNaruto = function(narutoId){
+  //   return $http({
+  //     method: 'GET',
+  //     url: url + '/' + narutoId,
+  //     headers: PARSE.CONFIG.headers,
+  //     cache: true
+  //   });
+  // };
+};
+
+BleachService.$inject = ['$http', 'PARSE'];
+
+exports['default'] = BleachService;
+module.exports = exports['default'];
+
+},{}],10:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var NarutoService = function NarutoService($http, PARSE) {
+
+  var url = PARSE.URL + 'classes/naruto';
+  //list of naruto characters
+  this.getNarutos = function () {
+    return $http({
+      url: url,
+      headers: PARSE.CONFIG.headers,
+      method: 'GET',
+      cache: true
+    });
+  };
+  //single naruto character
+  this.getNaruto = function (narutoId) {
+    return $http({
+      method: 'GET',
+      url: url + '/' + narutoId,
+      headers: PARSE.CONFIG.headers,
+      cache: true
+    });
+  };
+};
+
+NarutoService.$inject = ['$http', 'PARSE'];
+
+exports['default'] = NarutoService;
+module.exports = exports['default'];
+
+},{}],11:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.15
@@ -4568,7 +4681,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],9:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.7
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -33473,11 +33586,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],10:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":9}]},{},[7])
+},{"./angular":12}]},{},[8])
 
 
 //# sourceMappingURL=main.js.map

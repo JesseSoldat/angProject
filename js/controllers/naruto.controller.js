@@ -1,14 +1,19 @@
-let NarutoController = function($scope, $http, PARSE) {
-  
-    let url = PARSE.URL + 'classes/naruto';
+let NarutoController = function($scope, NarutoService) {
 
-    $http.get(url, PARSE.CONFIG).then( (res) => {
+
+    NarutoService.getNarutos().then ( (res) => {
       $scope.characters = res.data.results;
     });
+    
+    // let url = PARSE.URL + 'classes/naruto';
+
+    // $http.get(url, PARSE.CONFIG).then( (res) => {
+    //   $scope.characters = res.data.results;
+    // });
   
 
 };
 
-NarutoController.$inject = ['$scope', '$http', 'PARSE'];
+NarutoController.$inject = ['$scope', 'NarutoService'];
 
 export default NarutoController;
