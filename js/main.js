@@ -1,7 +1,7 @@
 import angular from 'angular';
 import 'angular-ui-router';
 import HomeController from './controllers/home.controller';
-import SignUpController from './controllers/signup.controller';
+import AddController from './controllers/add.controller';
 import AboutController from './controllers/about.controller';
 import ContactController from './controllers/contact.controller';
 import NarutoController from './controllers/naruto.controller';
@@ -28,7 +28,7 @@ angular
   .config(config)
   .controller('HomeController', HomeController)
   .controller('NarutoController', NarutoController)
-  .controller('SignUpController', SignUpController)
+  .controller('AddController', AddController)
   .controller('AboutController', AboutController)
   .controller('ContactController', ContactController);
 

@@ -18,10 +18,10 @@ let config = function($stateProvider, $urlRouterProvider) {
       controller: 'NarutoController',
       templateUrl: 'templates/naruto.tpl.html'
     })
-    .state('root.signup', {
-      url: '/signup',
-      controller: 'SignUpController',
-      templateUrl: 'templates/signup.tpl.html'
+    .state('root.add', {
+      url: '/add',
+      controller: 'AddController',
+      templateUrl: 'templates/add.tpl.html'
     })
     .state('root.about', {
       url: '/about',

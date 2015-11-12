@@ -6393,4 +6393,18 @@ body {
 ul, li {
   list-style: none; }
 
+.narutoTitle {
+  margin: 5% 5% 0 5%; }
+
+.characterWrapper {
+  width: 300px;
+  height: 250px;
+  float: left;
+  overflow: hidden;
+  margin: 4%; }
+
+.addCharacterWrapper {
+  width: 700px;
+  margin: 8% 5%; }
+
 /*# sourceMappingURL=main.css.map */

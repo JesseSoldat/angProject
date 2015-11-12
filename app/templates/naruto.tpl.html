@@ -1,8 +1,9 @@
 
-<h3>Naruto Characters</h3>
+<h3 class='narutoTitle'>Naruto Characters</h3>
 
 <div ng-repeat="character in characters">
-  <div>
-    <h4>{{character.Nihongo}}</h4>
+  <div class="characterWrapper">
+    <h5>{{character.Nihongo}} {{character.firstname}} {{character.lastname}}</h5>
+    <img src="{{character.url}}">
     </div>
 </div>
