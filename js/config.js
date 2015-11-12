@@ -28,6 +28,11 @@ let config = function($stateProvider, $urlRouterProvider) {
       controller: 'BleachController',
       templateUrl: 'templates/bleach.tpl.html'
     })
+    .state('root.single2', {
+      url: '/single2/:bleachId',
+      controller: 'BleachSingleController',
+      templateUrl: 'templates/single2.tpl.html'
+    })
     .state('root.add', {
       url: '/add',
       controller: 'AddController',

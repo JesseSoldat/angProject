@@ -7,6 +7,8 @@ import NarutoController from './controllers/naruto.controller';
 import NarutoSingleController from './controllers/naruto.single.controller';
 
 import BleachController from './controllers/bleach.controller';
+import BleachSingleController from './controllers/bleach.single.controller';
+
 
 import AddController from './controllers/add.controller';
 import ContactController from './controllers/contact.controller';
@@ -35,6 +37,7 @@ angular
   .controller('AddController', AddController)
   .controller('NarutoSingleController', NarutoSingleController)
   .controller('BleachController', BleachController)
+  .controller('BleachSingleController', BleachSingleController)
   .controller('ContactController', ContactController)
 
   .service('NarutoService', NarutoService)

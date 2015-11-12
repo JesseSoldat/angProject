@@ -1,7 +1,7 @@
   let BleachService = function($http, PARSE) {
 
   let url = PARSE.URL + 'classes/bleach';
-  //list of naruto characters
+  //list of bleach characters
   this.getBleachChars = function() {
     return $http({
       url: url,
@@ -10,15 +10,15 @@
       cache: true
     });
   }
-  //single naruto character
-  // this.getNaruto = function(narutoId){
-  //   return $http({
-  //     method: 'GET',
-  //     url: url + '/' + narutoId,
-  //     headers: PARSE.CONFIG.headers,
-  //     cache: true
-  //   });
-  // };
+  //single bleach character
+  this.getBleach = function(bleachId){
+    return $http({
+      method: 'GET',
+      url: url + '/' + bleachId,
+      headers: PARSE.CONFIG.headers,
+      cache: true
+    });
+  };
   
   
 
