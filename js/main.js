@@ -11,7 +11,8 @@ import BleachSingleController from './controllers/bleach.single.controller';
 
 
 import AddController from './controllers/add.controller';
-import ContactController from './controllers/contact.controller';
+import AddController2 from './controllers/add.controller2';
+
 //Config
 import config from './config';
 //Service
@@ -35,10 +36,12 @@ angular
   .controller('HomeController', HomeController)
   .controller('NarutoController', NarutoController)
   .controller('AddController', AddController)
+  .controller('AddController2', AddController2)
+
   .controller('NarutoSingleController', NarutoSingleController)
   .controller('BleachController', BleachController)
   .controller('BleachSingleController', BleachSingleController)
-  .controller('ContactController', ContactController)
+  
 
   .service('NarutoService', NarutoService)
   .service('BleachService', BleachService)

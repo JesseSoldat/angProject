@@ -9,13 +9,13 @@ let BleachSingleController = function($scope, $stateParams, BleachService) {
 
 
 //like button
-  // $scope.count = 0;
-  // $scope.message = 'likes';
+  $scope.count = 0;
+  $scope.message = 'likes';
 
-  // $scope.like = function() {
-  //   $scope.count++;
-  //   $scope.message = ($scope.count === 1) ? 'like' : 'likes';
-  // };
+  $scope.like = function() {
+    $scope.count++;
+    $scope.message = ($scope.count === 1) ? 'like' : 'likes';
+  };
 
 
 };

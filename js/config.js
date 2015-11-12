@@ -38,12 +38,7 @@ let config = function($stateProvider, $urlRouterProvider) {
       controller: 'AddController',
       templateUrl: 'templates/add.tpl.html'
     })
-    .state('root.contact', {
-      url: '/contact',
-      controller: 'ContactController',
-      templateUrl: 'templates/contact.tpl.html'
-
-    });
+ ;
 
 };
 config.$inject = ["$stateProvider", "$urlRouterProvider"];
