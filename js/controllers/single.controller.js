@@ -9,6 +9,15 @@ let SingleController = function($scope, $stateParams, $http, PARSE) {
 
   });
 
+  $scope.count = 0;
+  $scope.message = 'likes';
+
+  $scope.like = function() {
+    $scope.count++;
+    $scope.message = ($scope.count === 1) ? 'like' : 'likes';
+  };
+
+
 };
 
 SingleController.$inject = ["$scope", "$stateParams", "$http", "PARSE"];

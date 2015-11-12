@@ -124,9 +124,9 @@ exports['default'] = NarutoController;
 module.exports = exports['default'];
 
 },{}],6:[function(require,module,exports){
-"use strict";
+'use strict';
 
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
   value: true
 });
 var SingleController = function SingleController($scope, $stateParams, $http, PARSE) {
@@ -137,12 +137,20 @@ var SingleController = function SingleController($scope, $stateParams, $http, PA
 
     $scope.singleNaruto = res.data;
   });
+
+  $scope.count = 0;
+  $scope.message = 'likes';
+
+  $scope.like = function () {
+    $scope.count++;
+    $scope.message = $scope.count === 1 ? 'like' : 'likes';
+  };
 };
 
 SingleController.$inject = ["$scope", "$stateParams", "$http", "PARSE"];
 
-exports["default"] = SingleController;
-module.exports = exports["default"];
+exports['default'] = SingleController;
+module.exports = exports['default'];
 
 },{}],7:[function(require,module,exports){
 'use strict';
