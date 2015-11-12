@@ -19,15 +19,14 @@ var config = function config($stateProvider, $urlRouterProvider) {
     url: '/naruto',
     controller: 'NarutoController',
     templateUrl: 'templates/naruto.tpl.html'
+  }).state('root.single', {
+    url: '/single/:narutoId',
+    controller: 'SingleController',
+    templateUrl: 'templates/single.tpl.html'
   }).state('root.add', {
     url: '/add',
     controller: 'AddController',
     templateUrl: 'templates/add.tpl.html'
-  }).state('root.about', {
-    url: '/about',
-    controller: 'AboutController',
-    templateUrl: 'templates/about.tpl.html'
-
   }).state('root.contact', {
     url: '/contact',
     controller: 'ContactController',
@@ -41,21 +40,6 @@ exports['default'] = config;
 module.exports = exports['default'];
 
 },{}],2:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var AboutController = function AboutController($scope) {
-  $scope.about = "About";
-};
-
-AboutController.$inject = ["$scope"];
-
-exports["default"] = AboutController;
-module.exports = exports["default"];
-
-},{}],3:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -89,7 +73,7 @@ AddController.$inject = ["$scope", "$http", "PARSE"];
 exports["default"] = AddController;
 module.exports = exports["default"];
 
-},{}],4:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -104,7 +88,7 @@ ContactController.$inject = ["$scope"];
 exports["default"] = ContactController;
 module.exports = exports["default"];
 
-},{}],5:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -119,7 +103,7 @@ HomeController.$inject = ["$scope"];
 exports["default"] = HomeController;
 module.exports = exports["default"];
 
-},{}],6:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -139,6 +123,27 @@ NarutoController.$inject = ['$scope', '$http', 'PARSE'];
 exports['default'] = NarutoController;
 module.exports = exports['default'];
 
+},{}],6:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var SingleController = function SingleController($scope, $stateParams, $http, PARSE) {
+
+  var url = PARSE.URL + 'classes/naruto/' + $stateParams.narutoId;
+
+  $http.get(url, PARSE.CONFIG).then(function (res) {
+
+    $scope.singleNaruto = res.data;
+  });
+};
+
+SingleController.$inject = ["$scope", "$stateParams", "$http", "PARSE"];
+
+exports["default"] = SingleController;
+module.exports = exports["default"];
+
 },{}],7:[function(require,module,exports){
 'use strict';
 
@@ -154,21 +159,21 @@ var _controllersHomeController = require('./controllers/home.controller');
 
 var _controllersHomeController2 = _interopRequireDefault(_controllersHomeController);
 
+var _controllersNarutoController = require('./controllers/naruto.controller');
+
+var _controllersNarutoController2 = _interopRequireDefault(_controllersNarutoController);
+
 var _controllersAddController = require('./controllers/add.controller');
 
 var _controllersAddController2 = _interopRequireDefault(_controllersAddController);
 
-var _controllersAboutController = require('./controllers/about.controller');
+var _controllersSingleController = require('./controllers/single.controller');
 
-var _controllersAboutController2 = _interopRequireDefault(_controllersAboutController);
+var _controllersSingleController2 = _interopRequireDefault(_controllersSingleController);
 
 var _controllersContactController = require('./controllers/contact.controller');
 
 var _controllersContactController2 = _interopRequireDefault(_controllersContactController);
-
-var _controllersNarutoController = require('./controllers/naruto.controller');
-
-var _controllersNarutoController2 = _interopRequireDefault(_controllersNarutoController);
 
 var _config = require('./config');
 
@@ -182,9 +187,9 @@ _angular2['default'].module('app', ['ui.router']).constant('PARSE', {
       'X-Parse-REST-API-Key': 'p0BfgYREvmjZ1uJ4SBNtA8OdtS1vVSDygCnnPYKM'
     }
   }
-}).config(_config2['default']).controller('HomeController', _controllersHomeController2['default']).controller('NarutoController', _controllersNarutoController2['default']).controller('AddController', _controllersAddController2['default']).controller('AboutController', _controllersAboutController2['default']).controller('ContactController', _controllersContactController2['default']);
+}).config(_config2['default']).controller('HomeController', _controllersHomeController2['default']).controller('NarutoController', _controllersNarutoController2['default']).controller('AddController', _controllersAddController2['default']).controller('SingleController', _controllersSingleController2['default']).controller('ContactController', _controllersContactController2['default']);
 
-},{"./config":1,"./controllers/about.controller":2,"./controllers/add.controller":3,"./controllers/contact.controller":4,"./controllers/home.controller":5,"./controllers/naruto.controller":6,"angular":10,"angular-ui-router":8}],8:[function(require,module,exports){
+},{"./config":1,"./controllers/add.controller":2,"./controllers/contact.controller":3,"./controllers/home.controller":4,"./controllers/naruto.controller":5,"./controllers/single.controller":6,"angular":10,"angular-ui-router":8}],8:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.15

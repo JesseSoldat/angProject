@@ -1,17 +1,11 @@
 import angular from 'angular';
 import 'angular-ui-router';
 import HomeController from './controllers/home.controller';
-import AddController from './controllers/add.controller';
-import AboutController from './controllers/about.controller';
-import ContactController from './controllers/contact.controller';
 import NarutoController from './controllers/naruto.controller';
-
-
-
+import AddController from './controllers/add.controller';
+import SingleController from './controllers/single.controller';
+import ContactController from './controllers/contact.controller';
 import config from './config';
-
-
-
 
 
 angular
@@ -29,7 +23,7 @@ angular
   .controller('HomeController', HomeController)
   .controller('NarutoController', NarutoController)
   .controller('AddController', AddController)
-  .controller('AboutController', AboutController)
+  .controller('SingleController', SingleController)
   .controller('ContactController', ContactController);
 
 

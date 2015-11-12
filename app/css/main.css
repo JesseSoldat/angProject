@@ -6403,6 +6403,10 @@ ul, li {
   overflow: hidden;
   margin: 4%; }
 
+.narutoPictures img {
+  margin-top: 5%;
+  width: 400px; }
+
 .addCharacterWrapper {
   width: 700px;
   margin: 8% 5%; }

@@ -2,8 +2,15 @@
 <h3 class='narutoTitle'>Naruto Characters</h3>
 
 <div ng-repeat="character in characters">
+
   <div class="characterWrapper">
-    <h5>{{character.Nihongo}} {{character.firstname}} {{character.lastname}}</h5>
+
+    <h5>
+      <a href="#/single/{{character.objectId}}">
+      {{character.Nihongo}} {{character.firstname}} {{character.lastname}}</a>
+    </h5>
     <img src="{{character.url}}">
-    </div>
+
+  </div>
+
 </div>
