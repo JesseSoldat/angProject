@@ -1,13 +1,15 @@
 
 <h3 class='narutoTitle'>Naruto Characters</h3>
-
-<div ng-repeat="character in characters">
+<div class="listFilter">
+  <input placeholder="Search by name" type="text" ng-model="searchText">
+</div>
+<div ng-repeat="character in characters | filter:searchText">
 
   <div class="characterWrapper">
 
     <h5>
       <a href="#/single/{{character.objectId}}">
-      {{character.Nihongo}} {{character.firstname}} {{character.lastname}}</a>
+      {{character.Nihongo}} {{character.firstname}} {{character.lastname}} </a>
     </h5>
     <img src="{{character.url}}">
 

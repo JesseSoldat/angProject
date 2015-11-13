@@ -1,7 +1,9 @@
 
 <h3 class='bleachTitle'>Bleach Characters</h3>
-
-<div ng-repeat="character in characters">
+<div class="listFilter">
+  <input placeholder="Search by name" type="text" ng-model="searchText">
+</div>
+<div ng-repeat="character in characters | filter:searchText">
 
   <div class="characterWrapper">
 
