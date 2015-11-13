@@ -34,6 +34,11 @@
      let ch = new Character(obj);
      return $http.post(url, ch, PARSE.CONFIG);
   };
+
+  //edit bleach character
+  this.updateBleach = function(obj) {
+    return $http.put(url + '/' + obj.objectId, obj, PARSE.CONFIG);
+  };
   
   
 

@@ -1,7 +1,7 @@
 let BleachController = function($scope, BleachService) {
   
    BleachService.getBleachChars().then ( (res) => {
-    console.log(res);
+    // console.log(res);
       $scope.characters = res.data.results;
     });
 

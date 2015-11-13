@@ -2,7 +2,7 @@ let BleachSingleController = function($scope, $stateParams, BleachService) {
   
 
    BleachService.getBleach($stateParams.bleachId).then( (res) => {
-    console.log(res);
+    // console.log(res);
     $scope.singleBleach = res.data;
   });
 

@@ -44,7 +44,7 @@ let config = function($stateProvider, $urlRouterProvider) {
       templateUrl: 'templates/edit.tpl.html'
     })
     .state('root.edit2', {
-      url: '/edit2:/bleachId',
+      url: '/edit2/:bleachId',
       controller: 'EditController2',
       templateUrl: 'templates/edit2.tpl.html'
     })

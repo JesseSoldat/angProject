@@ -1,4 +1,6 @@
-    //get BLEACH
+let EditController2 = function($scope, $stateParams, BleachService) {
+
+  //get Bleach
   BleachService.getBleach($stateParams.bleachId).then( (res) => {
     // console.log('#1 GET:', res); 
     $scope.character = res.data;
@@ -13,3 +15,9 @@
 
     });
   }; 
+
+};
+
+EditController2.$inject = ['$scope', '$stateParams', 'BleachService'];
+
+export default EditController2;
