@@ -35,6 +35,14 @@ var config = function config($stateProvider, $urlRouterProvider) {
     url: '/add',
     controller: 'AddController',
     templateUrl: 'templates/add.tpl.html'
+  }).state('root.edit', {
+    url: '/edit/:narutoId',
+    controller: 'EditController',
+    templateUrl: 'templates/edit.tpl.html'
+  }).state('root.edit2', {
+    url: '/edit2:/bleachId',
+    controller: 'EditController2',
+    templateUrl: 'templates/edit2.tpl.html'
   });
 };
 config.$inject = ["$stateProvider", "$urlRouterProvider"];
@@ -71,26 +79,6 @@ exports["default"] = AddController;
 module.exports = exports["default"];
 
 },{}],3:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var AddController2 = function AddController2($scope, BleachService) {
-
-  $scope.addCharacter = function (obj) {
-    BleachService.addCharacter(obj).then(function (res) {
-      $scope.character = {};
-    });
-  };
-};
-
-AddController2.$inject = ["$scope", "BleachService"];
-
-exports["default"] = AddController2;
-module.exports = exports["default"];
-
-},{}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -109,7 +97,7 @@ BleachController.$inject = ['$scope', 'BleachService'];
 exports['default'] = BleachController;
 module.exports = exports['default'];
 
-},{}],5:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -135,6 +123,35 @@ var BleachSingleController = function BleachSingleController($scope, $stateParam
 BleachSingleController.$inject = ["$scope", "$stateParams", "BleachService"];
 
 exports['default'] = BleachSingleController;
+module.exports = exports['default'];
+
+},{}],5:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var EditController = function EditController($scope, $stateParams, NarutoService) {
+
+  //get NARUTO
+  NarutoService.getNaruto($stateParams.narutoId).then(function (res) {
+    // console.log('#1 GET:', res);
+    $scope.character = res.data;
+  });
+
+  //put NARUTO
+  $scope.updateNaruto = function (obj) {
+    // console.log('#2', obj);
+    NarutoService.updateNaruto(obj).then(function (res) {
+      // console.log(res);
+      alert("You Edited a Naruto Character!");
+    });
+  };
+};
+
+EditController.$inject = ['$scope', '$stateParams', 'NarutoService'];
+
+exports['default'] = EditController;
 module.exports = exports['default'];
 
 },{}],6:[function(require,module,exports){
@@ -242,9 +259,9 @@ var _controllersAddController = require('./controllers/add.controller');
 
 var _controllersAddController2 = _interopRequireDefault(_controllersAddController);
 
-var _controllersAddController22 = require('./controllers/add.controller2');
+var _controllersEditController = require('./controllers/edit.controller');
 
-var _controllersAddController23 = _interopRequireDefault(_controllersAddController22);
+var _controllersEditController2 = _interopRequireDefault(_controllersEditController);
 
 //Config
 
@@ -270,9 +287,9 @@ _angular2['default'].module('app', ['ui.router']).constant('PARSE', {
       'X-Parse-REST-API-Key': 'p0BfgYREvmjZ1uJ4SBNtA8OdtS1vVSDygCnnPYKM'
     }
   }
-}).config(_config2['default']).controller('HomeController', _controllersHomeController2['default']).controller('NarutoController', _controllersNarutoController2['default']).controller('AddController', _controllersAddController2['default']).controller('AddController2', _controllersAddController23['default']).controller('NarutoSingleController', _controllersNarutoSingleController2['default']).controller('BleachController', _controllersBleachController2['default']).controller('BleachSingleController', _controllersBleachSingleController2['default']).service('NarutoService', _servicesNarutoService2['default']).service('BleachService', _servicesBleachService2['default']);
+}).config(_config2['default']).controller('HomeController', _controllersHomeController2['default']).controller('NarutoController', _controllersNarutoController2['default']).controller('NarutoSingleController', _controllersNarutoSingleController2['default']).controller('BleachController', _controllersBleachController2['default']).controller('BleachSingleController', _controllersBleachSingleController2['default']).controller('AddController', _controllersAddController2['default']).controller('EditController', _controllersEditController2['default']).service('NarutoService', _servicesNarutoService2['default']).service('BleachService', _servicesBleachService2['default']);
 
-},{"./config":1,"./controllers/add.controller":2,"./controllers/add.controller2":3,"./controllers/bleach.controller":4,"./controllers/bleach.single.controller":5,"./controllers/home.controller":6,"./controllers/naruto.controller":7,"./controllers/naruto.single.controller":8,"./services/bleach.service":10,"./services/naruto.service":11,"angular":14,"angular-ui-router":12}],10:[function(require,module,exports){
+},{"./config":1,"./controllers/add.controller":2,"./controllers/bleach.controller":3,"./controllers/bleach.single.controller":4,"./controllers/edit.controller":5,"./controllers/home.controller":6,"./controllers/naruto.controller":7,"./controllers/naruto.single.controller":8,"./services/bleach.service":10,"./services/naruto.service":11,"angular":14,"angular-ui-router":12}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -362,6 +379,12 @@ var NarutoService = function NarutoService($http, PARSE) {
   this.addCharacter = function (obj) {
     var ch = new Character(obj);
     return $http.post(url, ch, PARSE.CONFIG);
+  };
+
+  //edit naruto character
+  this.updateNaruto = function (obj) {
+    // console.log('#3',obj);
+    return $http.put(url + '/' + obj.objectId, obj, PARSE.CONFIG);
   };
 };
 

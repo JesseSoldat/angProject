@@ -38,6 +38,16 @@ let config = function($stateProvider, $urlRouterProvider) {
       controller: 'AddController',
       templateUrl: 'templates/add.tpl.html'
     })
+    .state('root.edit', {
+      url: '/edit/:narutoId',
+      controller: 'EditController',
+      templateUrl: 'templates/edit.tpl.html'
+    })
+    .state('root.edit2', {
+      url: '/edit2:/bleachId',
+      controller: 'EditController2',
+      templateUrl: 'templates/edit2.tpl.html'
+    })
  ;
 
 };

@@ -34,7 +34,12 @@ let NarutoService = function($http, PARSE) {
      let ch = new Character(obj);
      return $http.post(url, ch, PARSE.CONFIG);
   };
-  
+
+  //edit naruto character
+  this.updateNaruto = function(obj) {
+    // console.log('#3',obj);
+    return $http.put(url + '/' + obj.objectId, obj, PARSE.CONFIG);
+  };
   
 
 };
