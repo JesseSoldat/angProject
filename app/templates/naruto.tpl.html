@@ -1,9 +1,16 @@
 
 <h3 class='narutoTitle'>Naruto Characters</h3>
-<div class="listFilter">
-  <input placeholder="Search by name" type="text" ng-model="searchText">
+
+<div class="listFilterWrapper">
+  <div class="listFilter1">
+    <input placeholder="Search by first name" type="text" ng-model="search.firstname">
+  </div>
+  <div class="listFilter2">
+    <input placeholder="Search by last name" type="text" ng-model="search.lastname">
+  </div> 
 </div>
-<div ng-repeat="character in characters | filter:searchText">
+
+<div ng-repeat="character in characters | filter:search">
 
   <div class="characterWrapper">
 

@@ -6403,9 +6403,16 @@ ul, li {
   margin: 3% auto;
   box-shadow: 5px 5px 5px black; }
 
-.listFilter {
-  width: 80%;
-  margin: 3% 5% 0 5%; }
+.listFilterWrapper {
+  width: 80%; }
+  .listFilterWrapper .listFilter1 {
+    display: inline-block;
+    width: 35%;
+    margin: 4% 5% 0 6%; }
+  .listFilterWrapper .listFilter2 {
+    display: inline-block;
+    width: 35%;
+    margin: 2% 5% 0 1%; }
 
 .narutoTitle {
   margin: 5% 5% 0 5%; }
