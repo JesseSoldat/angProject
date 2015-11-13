@@ -7,7 +7,7 @@
   <img src="{{singleNaruto.url2}}">
   <img src="{{singleNaruto.url3}}">
 </div>
-<button class="likeBtn" ng-click="like()">{{message}}: <span>{{count}}</span></button>
+<button ng-model="singleNaurto.likes" class="likeBtn" ng-click="like(singleNaruto)">{{message}}: <span>{{singleNaruto.likes}}</span></button>
 
 <a href="#/edit/{{ singleNaruto.objectId }}"><button class="likeBtn">Edit</button></a>
 

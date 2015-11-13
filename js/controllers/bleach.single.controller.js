@@ -7,20 +7,20 @@ let BleachSingleController = function($scope, $stateParams, BleachService) {
 
 
     //like button
-    // $scope.count = res.data.likes;
+    //----------------------------------------
     $scope.message = 'likes';
 
     $scope.like = function(obj) {
       
       obj.likes++;
-      console.log(obj);
+      // console.log(obj);
 
       $scope.message = (obj.likes === 1) ? 'like' : 'likes';
       $scope.updateBleach(obj);
       
     }; //$scope.like
     $scope.updateBleach = function(obj){
-        console.log(obj);
+        // console.log(obj);
         BleachService.updateBleach(obj).then( (res) => {
           // alert('liked');
         })
@@ -29,11 +29,7 @@ let BleachSingleController = function($scope, $stateParams, BleachService) {
 
   }); //BleachService
 
-   //      $scope.updateBleach = function (obj) {
-   //        // console.log('#2', obj);
-   //        BleachService.updateBleach(obj).then( (res) => {
-   //        }); //BleachService
-   //      }; //$scope.updateBleach
+
 
 
    
