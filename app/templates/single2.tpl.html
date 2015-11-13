@@ -1,12 +1,12 @@
  
 
-<h3>{{singleBleach.Nihongo}} {{singleBleach.firstname}} {{singleBleach.lastname}}</h3>
+<h3 class="singleTitle">{{singleBleach.Nihongo}} {{singleBleach.firstname}} {{singleBleach.lastname}}</h3>
 
 <div class="bleachPictures">
   <img src="{{singleBleach.url}}">
   <img src="{{singleBleach.url2}}">
   <img src="{{singleBleach.url3}}">
 </div>
-<button ng-click="like()">{{message}}: <span>{{count}}</span></button>
+<button class="likeBtn" ng-click="like()">{{message}}: <span>{{count}}</span></button>
 
-<a href="#/edit2/{{ singleBleach.objectId }}">Edit</a>
+<a href="#/edit2/{{ singleBleach.objectId }}"><button class="likeBtn">Edit</button></a>

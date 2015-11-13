@@ -1,15 +1,15 @@
 
 
-<h3>{{singleNaruto.Nihongo}} {{singleNaruto.firstname}} {{singleNaruto.lastname}}</h3>
+<h3 class="singleTitle">{{singleNaruto.Nihongo}} {{singleNaruto.firstname}} {{singleNaruto.lastname}}</h3>
 
 <div class="narutoPictures">
   <img src="{{singleNaruto.url}}">
   <img src="{{singleNaruto.url2}}">
   <img src="{{singleNaruto.url3}}">
 </div>
-<button ng-click="like()">{{message}}: <span>{{count}}</span></button>
+<button class="likeBtn" ng-click="like()">{{message}}: <span>{{count}}</span></button>
 
-<a href="#/edit/{{ singleNaruto.objectId }}">Edit</a>
+<a href="#/edit/{{ singleNaruto.objectId }}"><button class="likeBtn">Edit</button></a>
 
 
 

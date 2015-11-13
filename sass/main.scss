@@ -7,35 +7,59 @@ body {
 ul, li {
   list-style: none;
 }
-
+//home page
+.homeTitle{
+  margin: 3% 8%;
+}
+.homeImg {
+  width: 1100px;
+  border: 3px solid black;
+  border-radius: 2px;
+  margin: 3% auto;
+  box-shadow: 5px 5px 5px black;
+}
 .narutoTitle {
   margin: 5% 5% 0 5%;
 }
 
 .characterWrapper {
   width: 300px;
-  height: 250px;
+  height: 350px;
   float: left;
   overflow: hidden;
-  margin: 4%;
+  margin: 3% 3% 0 3%;
     img {
+      border: 2px solid black;
+      box-shadow: 5px 5px 5px black;
       width: 100%;
     }
 
 }
 
 //single character page
+.singleTitle {
+  margin: 5% 5% 0 5%;
+}
+.likeBtn {
+  width: 200px;
+  margin-left: 5%;
+  border: 2px solid black;
+  box-shadow: 5px 5px 5px black;
+}
 .narutoPictures {
   img {
-    margin-top: 5%;
+    margin: 5% .5%;
     width: 400px;
+    border: 2px solid black;
+    box-shadow: 5px 5px 5px black;
   }
 }
-
 .bleachPictures {
   img {
-    margin-top: 5%;
     width: 400px;
+    margin: 5% .5%;
+    border: 2px solid black;
+    box-shadow: 5px 5px 5px black;
   }
 }
 //add character form
