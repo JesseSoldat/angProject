@@ -1,13 +1,10 @@
-let NarutoSingleController = function($scope, $stateParams, $http, PARSE, NarutoService) {
+let NarutoSingleController = function($scope, $stateParams, NarutoService) {
   
 
-  let url = PARSE.URL + 'classes/naruto/' + $stateParams.narutoId;
 
-  $http.get(url, PARSE.CONFIG).then( (res) => {
-
+  NarutoService.getNaruto($stateParams.narutoId).then( (res) => {
     $scope.singleNaruto = res.data;
-
-  });
+  }); //NarutoService
 
 
 //like button
@@ -31,6 +28,6 @@ let NarutoSingleController = function($scope, $stateParams, $http, PARSE, Naruto
 
 };
 
-NarutoSingleController.$inject = ["$scope", "$stateParams", "$http", "PARSE", "NarutoService"];
+NarutoSingleController.$inject = ["$scope", "$stateParams", "NarutoService"];
 
 export default NarutoSingleController;

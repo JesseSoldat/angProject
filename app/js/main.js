@@ -108,26 +108,26 @@ var BleachSingleController = function BleachSingleController($scope, $stateParam
   BleachService.getBleach($stateParams.bleachId).then(function (res) {
     // console.log(res);
     $scope.singleBleach = res.data;
-
-    //like button
-    //----------------------------------------
-    $scope.message = 'likes';
-
-    $scope.like = function (obj) {
-
-      obj.likes++;
-      // console.log(obj);
-
-      $scope.message = obj.likes === 1 ? 'like' : 'likes';
-      $scope.updateBleach(obj);
-    }; //$scope.like
-    $scope.updateBleach = function (obj) {
-      // console.log(obj);
-      BleachService.updateBleach(obj).then(function (res) {
-        // alert('liked');
-      });
-    }; //$scope.updateBleach
   }); //BleachService
+
+  //like button
+  //----------------------------------------
+  $scope.message = 'likes';
+
+  $scope.like = function (obj) {
+
+    obj.likes++;
+    // console.log(obj);
+
+    $scope.message = obj.likes === 1 ? 'like' : 'likes';
+    $scope.updateBleach(obj);
+  }; //$scope.like
+  $scope.updateBleach = function (obj) {
+    // console.log(obj);
+    BleachService.updateBleach(obj).then(function (res) {
+      // alert('liked');
+    });
+  }; //$scope.updateBleach
 };
 
 BleachSingleController.$inject = ["$scope", "$stateParams", "BleachService"];
@@ -238,14 +238,11 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var NarutoSingleController = function NarutoSingleController($scope, $stateParams, $http, PARSE, NarutoService) {
+var NarutoSingleController = function NarutoSingleController($scope, $stateParams, NarutoService) {
 
-  var url = PARSE.URL + 'classes/naruto/' + $stateParams.narutoId;
-
-  $http.get(url, PARSE.CONFIG).then(function (res) {
-
+  NarutoService.getNaruto($stateParams.narutoId).then(function (res) {
     $scope.singleNaruto = res.data;
-  });
+  }); //NarutoService
 
   //like button
   //----------------------------------------
@@ -265,7 +262,7 @@ var NarutoSingleController = function NarutoSingleController($scope, $stateParam
   }; //updateNarto
 };
 
-NarutoSingleController.$inject = ["$scope", "$stateParams", "$http", "PARSE", "NarutoService"];
+NarutoSingleController.$inject = ["$scope", "$stateParams", "NarutoService"];
 
 exports['default'] = NarutoSingleController;
 module.exports = exports['default'];
