@@ -108,16 +108,32 @@ var BleachSingleController = function BleachSingleController($scope, $stateParam
   BleachService.getBleach($stateParams.bleachId).then(function (res) {
     // console.log(res);
     $scope.singleBleach = res.data;
-  });
 
-  //like button
-  $scope.count = 0;
-  $scope.message = 'likes';
+    //like button
+    // $scope.count = res.data.likes;
+    $scope.message = 'likes';
 
-  $scope.like = function () {
-    $scope.count++;
-    $scope.message = $scope.count === 1 ? 'like' : 'likes';
-  };
+    $scope.like = function (obj) {
+
+      obj.likes++;
+      console.log(obj);
+
+      $scope.message = obj.likes === 1 ? 'like' : 'likes';
+      $scope.updateBleach(obj);
+    }; //$scope.like
+    $scope.updateBleach = function (obj) {
+      console.log(obj);
+      BleachService.updateBleach(obj).then(function (res) {
+        // alert('liked');
+      });
+    }; //$scope.updateBleach
+  }); //BleachService
+
+  //      $scope.updateBleach = function (obj) {
+  //        // console.log('#2', obj);
+  //        BleachService.updateBleach(obj).then( (res) => {
+  //        }); //BleachService
+  //      }; //$scope.updateBleach
 };
 
 BleachSingleController.$inject = ["$scope", "$stateParams", "BleachService"];

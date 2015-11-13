@@ -4,18 +4,40 @@ let BleachSingleController = function($scope, $stateParams, BleachService) {
    BleachService.getBleach($stateParams.bleachId).then( (res) => {
     // console.log(res);
     $scope.singleBleach = res.data;
-  });
 
 
+    //like button
+    // $scope.count = res.data.likes;
+    $scope.message = 'likes';
 
-//like button
-  $scope.count = 0;
-  $scope.message = 'likes';
+    $scope.like = function(obj) {
+      
+      obj.likes++;
+      console.log(obj);
 
-  $scope.like = function() {
-    $scope.count++;
-    $scope.message = ($scope.count === 1) ? 'like' : 'likes';
-  };
+      $scope.message = (obj.likes === 1) ? 'like' : 'likes';
+      $scope.updateBleach(obj);
+      
+    }; //$scope.like
+    $scope.updateBleach = function(obj){
+        console.log(obj);
+        BleachService.updateBleach(obj).then( (res) => {
+          // alert('liked');
+        })
+      }; //$scope.updateBleach
+    
+
+  }); //BleachService
+
+   //      $scope.updateBleach = function (obj) {
+   //        // console.log('#2', obj);
+   //        BleachService.updateBleach(obj).then( (res) => {
+   //        }); //BleachService
+   //      }; //$scope.updateBleach
+
+
+   
+
 
 
 };
