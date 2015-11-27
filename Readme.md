@@ -2,6 +2,8 @@
 
 > This is a site made with Angular. Users can view and rate their favorite Naruto or Bleach characters. Each character has three different photos. Users can filter their search while searching for characters on the page. Users can add characters and also edit existing entries in the database. 
 
+http://naruto_vs_bleach.surge.sh/#/
+
 
 ## Usage
 
